@@ -2,30 +2,42 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
 
 const NAV_LINKS = [
   { href: "/services", label: "Services" },
   { href: "/about", label: "About" },
-  { href: "/contact", label: "Contact" },
 ];
 
 export function Nav() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    function onScroll() {
+      setScrolled(window.scrollY > 20);
+    }
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-brand-800 bg-brand-950/90 backdrop-blur-sm">
-      <nav className="max-w-7xl mx-auto px-6 lg:px-12 h-16 flex items-center justify-between">
-        {/* Logo / Wordmark */}
+    <header
+      className={cn(
+        "sticky top-0 z-50 bg-cream transition-all duration-150",
+        scrolled ? "border-b border-rule" : "border-b border-transparent"
+      )}
+    >
+      <nav className="max-w-content mx-auto px-6 lg:px-12 h-16 flex items-center justify-between">
+        {/* Wordmark */}
         <Link
           href="/"
-          className="text-brand-50 font-serif text-xl font-medium tracking-tight hover:text-accent transition-colors"
           onClick={() => setOpen(false)}
+          className="font-sans text-sm font-medium tracking-[0.1em] uppercase text-ink hover:text-navy transition-colors"
         >
-          {/* TODO: Replace with Designer-specified wordmark/logo asset */}
-          Mezen
+          MEZEN
         </Link>
 
         {/* Desktop nav */}
@@ -35,10 +47,10 @@ export function Nav() {
               <Link
                 href={href}
                 className={cn(
-                  "text-sm font-medium transition-colors",
+                  "text-xs font-medium tracking-[0.06em] uppercase transition-colors",
                   pathname === href
-                    ? "text-brand-50"
-                    : "text-brand-400 hover:text-brand-100"
+                    ? "text-ink"
+                    : "text-slate hover:text-ink"
                 )}
               >
                 {label}
@@ -51,26 +63,45 @@ export function Nav() {
         <div className="hidden md:block">
           <Link
             href="/contact"
-            className="inline-flex items-center justify-center px-5 py-2 bg-accent text-brand-950 font-semibold text-sm rounded-sm hover:bg-accent-dark transition-colors"
+            className="text-xs font-medium tracking-[0.06em] uppercase text-navy hover:text-ink underline underline-offset-4 decoration-navy/40 transition-colors"
           >
-            {/* TODO: CTA copy from CMO */}
-            Talk to us
+            Work with us
           </Link>
         </div>
 
         {/* Mobile hamburger */}
         <button
-          className="md:hidden text-brand-300 hover:text-brand-50 transition-colors"
+          className="md:hidden text-ink p-1"
           onClick={() => setOpen((v) => !v)}
           aria-label={open ? "Close menu" : "Open menu"}
         >
           {open ? (
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+            <svg
+              className="w-5 h-5"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth={1.5}
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M6 18L18 6M6 6l12 12"
+              />
             </svg>
           ) : (
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+            <svg
+              className="w-5 h-5"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth={1.5}
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M4 6h16M4 12h16M4 18h16"
+              />
             </svg>
           )}
         </button>
@@ -78,15 +109,15 @@ export function Nav() {
 
       {/* Mobile menu */}
       {open && (
-        <div className="md:hidden border-t border-brand-800 bg-brand-950 px-6 py-6 space-y-4">
+        <div className="md:hidden border-t border-rule bg-cream px-6 py-8 space-y-6">
           {NAV_LINKS.map(({ href, label }) => (
             <Link
               key={href}
               href={href}
               onClick={() => setOpen(false)}
               className={cn(
-                "block text-base font-medium py-1 transition-colors",
-                pathname === href ? "text-brand-50" : "text-brand-400"
+                "block text-xs font-medium tracking-[0.06em] uppercase",
+                pathname === href ? "text-ink" : "text-slate"
               )}
             >
               {label}
@@ -95,9 +126,9 @@ export function Nav() {
           <Link
             href="/contact"
             onClick={() => setOpen(false)}
-            className="mt-4 block text-center px-5 py-3 bg-accent text-brand-950 font-semibold text-sm rounded-sm hover:bg-accent-dark transition-colors"
+            className="block text-xs font-medium tracking-[0.06em] uppercase text-navy underline underline-offset-4"
           >
-            Talk to us
+            Work with us
           </Link>
         </div>
       )}

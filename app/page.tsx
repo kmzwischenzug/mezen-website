@@ -1,172 +1,186 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
-// TODO: Replace all copy with CMO-approved text from MEZA-29
-// TODO: Replace layout/design with Designer specs from MEZA-30
-
 export const metadata: Metadata = {
-  title: "Mezen — B2B Revenue Growth Consulting",
+  title: "Mezen — Operators, not advisors.",
   description:
-    "Mezen helps growing B2B companies accelerate revenue, improve margins, and make better strategic decisions.",
+    "Mezen works with B2B founders in crypto and fintech to diagnose the actual source of their revenue problems — then fixes them.",
 };
+
+const PILLARS = [
+  {
+    title: "Revenue Growth",
+    body: "Most revenue problems aren't about volume — they're about fit. We diagnose why pipeline isn't converting, whether pricing is leaving margin on the table, and which channels are worth doubling down on. You leave with a clear picture and a sequenced plan, not a framework.",
+  },
+  {
+    title: "Margin Improvement",
+    body: "Healthy revenue with deteriorating margins is a quiet crisis. We map your unit economics, identify the cost structure decisions dragging you down, and implement the changes that actually move the number. This is not a benchmarking exercise.",
+  },
+  {
+    title: "Strategic Decisions",
+    body: "Market entry, build vs. buy, org design — these decisions compound for years. We bring pattern recognition from having navigated these choices across B2B businesses, so you make them with real context, not just conviction.",
+  },
+];
+
+const HOW_IT_WORKS_STEPS = [
+  {
+    num: "01",
+    title: "Diagnose",
+    desc: "We spend the first two weeks mapping your actual revenue problem, not the symptoms you brought to us.",
+  },
+  {
+    num: "02",
+    title: "Design",
+    desc: "We build a specific, sequenced plan grounded in your constraints — market, team, and runway.",
+  },
+  {
+    num: "03",
+    title: "Execute",
+    desc: "We do the work alongside you. Implementation is not optional.",
+  },
+];
+
+const PROOF_POINTS = [
+  {
+    bold: "We do the work.",
+    body: "Not decks and handoffs. We sit inside your problem until it's solved.",
+  },
+  {
+    bold: "We diagnose first.",
+    body: "We don't sell a solution before we understand the problem. Every engagement starts with diagnosis, not a proposal.",
+  },
+  {
+    bold: "We share what we learn.",
+    body: "You should understand why your revenue problem exists — not just watch it get fixed. We document everything.",
+  },
+  {
+    bold: "We measure outcomes.",
+    body: "We care about the number, not the narrative. Results are the only deliverable that matters.",
+  },
+];
 
 export default function HomePage() {
   return (
     <>
       {/* Hero */}
-      <section className="relative min-h-[90vh] flex items-center border-b border-brand-800">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12 py-24">
-          <div className="max-w-3xl">
-            {/* TODO: CMO headline */}
-            <p className="text-accent text-sm font-medium tracking-widest uppercase mb-6">
-              B2B Revenue Consulting
-            </p>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-serif text-brand-50 leading-tight text-balance mb-8">
-              {/* TODO: Replace with CMO headline */}
-              We work alongside founders to fix revenue problems.
-            </h1>
-            <p className="text-lg text-brand-300 max-w-2xl mb-10 leading-relaxed">
-              {/* TODO: Replace with CMO subheadline */}
-              Mezen partners with B2B founders under $10M to diagnose what is
-              stalling growth and execute the fix — alongside your team, not
-              just in a slide deck.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4">
-              {/* TODO: CTA copy from CMO */}
-              <Link
-                href="/contact"
-                className="inline-flex items-center justify-center px-8 py-4 bg-accent text-brand-950 font-semibold rounded-sm hover:bg-accent-dark transition-colors"
-              >
-                Talk to us
-              </Link>
-              <Link
-                href="/services"
-                className="inline-flex items-center justify-center px-8 py-4 border border-brand-600 text-brand-200 font-medium rounded-sm hover:border-brand-400 hover:text-brand-50 transition-colors"
-              >
-                Our services
-              </Link>
-            </div>
-          </div>
+      <section className="bg-cream">
+        <div className="max-w-content mx-auto px-6 lg:px-12 pt-[180px] pb-[120px]">
+          <h1 className="font-serif font-bold text-ink leading-[1.05] text-[40px] md:text-[64px] lg:text-[76px] max-w-[900px] mb-8 text-balance">
+            Revenue problems don&apos;t need more advice. They need the work
+            done.
+          </h1>
+          <p className="text-slate leading-[1.65] text-lg max-w-[640px] mb-10">
+            Mezen works with B2B founders in crypto and fintech to diagnose the
+            actual source of their revenue problems — then fixes them. We sit
+            inside your business until the number moves.
+          </p>
+          <Link
+            href="/contact"
+            className="text-navy font-medium text-sm tracking-[0.04em] hover:text-ink transition-colors underline underline-offset-4 decoration-navy/40"
+          >
+            Work with us →
+          </Link>
         </div>
       </section>
 
-      {/* Social proof / Credibility bar */}
-      {/* TODO: Add credibility elements from CMO (MEZA-29) */}
+      {/* Focus strip */}
+      <section className="bg-linen py-12">
+        <div className="max-w-content mx-auto px-6 lg:px-12">
+          <p className="text-center text-xs font-medium tracking-[0.12em] uppercase text-slate">
+            We work alongside B2B founders in crypto and fintech — diagnosing
+            revenue problems and doing the work to fix them.
+          </p>
+        </div>
+      </section>
 
-      {/* Services overview */}
-      <section className="py-24 border-b border-brand-800">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          <div className="mb-16">
-            <p className="text-accent text-sm font-medium tracking-widest uppercase mb-4">
-              What we do
-            </p>
-            {/* TODO: Section headline from CMO */}
-            <h2 className="text-3xl sm:text-4xl font-serif text-brand-50 max-w-2xl text-balance">
-              Revenue problems have predictable causes. We know where to look.
-            </h2>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {/* TODO: Replace service cards with CMO copy + Designer layout */}
-            {SERVICES_PLACEHOLDER.map((service) => (
-              <div
-                key={service.title}
-                className="p-8 border border-brand-800 hover:border-brand-600 transition-colors"
-              >
-                <h3 className="text-lg font-semibold text-brand-50 mb-3">
-                  {service.title}
+      {/* Three pillars */}
+      <section className="bg-cream py-16 lg:py-[120px] border-t border-rule">
+        <div className="max-w-content mx-auto px-6 lg:px-12">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8">
+            {PILLARS.map((pillar) => (
+              <div key={pillar.title}>
+                <h3 className="font-sans font-semibold text-ink text-[22px] leading-[1.3] mb-4">
+                  {pillar.title}
                 </h3>
-                <p className="text-brand-300 leading-relaxed text-sm">
-                  {service.description}
+                <p className="text-slate leading-[1.65] text-base">
+                  {pillar.body}
                 </p>
               </div>
             ))}
           </div>
-
-          <div className="mt-12">
-            <Link
-              href="/services"
-              className="text-accent hover:text-accent-light font-medium text-sm inline-flex items-center gap-2 transition-colors"
-            >
-              See all services →
-            </Link>
-          </div>
         </div>
       </section>
 
-      {/* How we work */}
-      <section className="py-24 border-b border-brand-800">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+      {/* How it works */}
+      <section className="bg-cream py-16 lg:py-[120px] border-t border-rule">
+        <div className="max-w-content mx-auto px-6 lg:px-12">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
+            {/* Left: operator framing */}
             <div>
-              <p className="text-accent text-sm font-medium tracking-widest uppercase mb-4">
-                How we work
-              </p>
-              {/* TODO: Replace with CMO copy */}
-              <h2 className="text-3xl sm:text-4xl font-serif text-brand-50 mb-6 text-balance">
-                We complete work alongside you, not just advise on it.
+              <h2 className="font-serif font-semibold text-ink text-[30px] md:text-[44px] leading-[1.15] mb-6">
+                How it works
               </h2>
-              <p className="text-brand-300 leading-relaxed mb-6">
-                {/* TODO: CMO body copy */}
-                Most consultants hand you a framework and leave. We stay in the
-                room — running diagnostics, building playbooks, and executing
-                alongside your team until the revenue number moves.
+              <p className="text-slate leading-[1.65] text-base">
+                Most consultants give you their findings and leave. We don&apos;t.
+                Mezen works alongside the founder — inside the problem, not above
+                it — until the work is done. We&apos;re operators, not advisors,
+                and that distinction shows up in how we engage.
               </p>
-              <Link
-                href="/about"
-                className="text-accent hover:text-accent-light font-medium text-sm inline-flex items-center gap-2 transition-colors"
-              >
-                About Mezen →
-              </Link>
             </div>
-            {/* TODO: Replace with Designer-specified visual element */}
-            <div className="h-80 bg-brand-900 border border-brand-800 flex items-center justify-center">
-              <span className="text-brand-600 text-sm">
-                [Designer visual placeholder]
-              </span>
+
+            {/* Right: numbered steps */}
+            <div className="space-y-8">
+              {HOW_IT_WORKS_STEPS.map((step) => (
+                <div key={step.num}>
+                  <div className="w-8 h-px bg-gold mb-4" />
+                  <p className="font-sans font-medium text-xs tracking-[0.1em] uppercase text-slate mb-1">
+                    {step.num}
+                  </p>
+                  <h3 className="font-sans font-semibold text-ink text-[22px] leading-[1.3] mb-2">
+                    {step.title}
+                  </h3>
+                  <p className="text-slate leading-[1.65] text-base">
+                    {step.desc}
+                  </p>
+                </div>
+              ))}
             </div>
           </div>
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="py-24">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12 text-center">
-          {/* TODO: CTA section from CMO */}
-          <h2 className="text-3xl sm:text-4xl font-serif text-brand-50 mb-6 text-balance">
-            Ready to diagnose what is stalling your revenue?
+      {/* Why founders work with us */}
+      <section className="bg-linen py-16 lg:py-[120px] border-t border-rule">
+        <div className="max-w-content mx-auto px-6 lg:px-12">
+          <h2 className="font-serif font-semibold text-ink text-[30px] md:text-[44px] leading-[1.15] mb-12">
+            Why founders work with us
           </h2>
-          <p className="text-brand-300 max-w-xl mx-auto mb-10">
-            Start with the Revenue Scorecard — free, takes 10 minutes, gives
-            you a scored view of your GTM.
-          </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
+            {PROOF_POINTS.map((point) => (
+              <p key={point.bold} className="text-ink leading-[1.65] text-base">
+                <strong className="font-semibold">{point.bold}</strong>{" "}
+                <span className="text-slate">{point.body}</span>
+              </p>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA closer */}
+      <section className="bg-navy py-16 lg:py-[120px]">
+        <div className="max-w-content mx-auto px-6 lg:px-12 text-center">
+          <h2 className="font-serif font-semibold text-linen text-[30px] md:text-[44px] leading-[1.15] mb-8 max-w-[640px] mx-auto text-balance">
+            If your revenue isn&apos;t moving the way it should, let&apos;s find out
+            why.
+          </h2>
           <Link
             href="/contact"
-            className="inline-flex items-center justify-center px-10 py-4 bg-accent text-brand-950 font-semibold rounded-sm hover:bg-accent-dark transition-colors"
+            className="text-linen text-xs font-medium tracking-[0.08em] uppercase hover:opacity-70 transition-opacity underline underline-offset-4 decoration-linen/40"
           >
-            Get started
+            Apply to work with us →
           </Link>
         </div>
       </section>
     </>
   );
 }
-
-// TODO: Replace with real service data from CMO copy brief (MEZA-29)
-const SERVICES_PLACEHOLDER = [
-  {
-    title: "Revenue Diagnostic",
-    description:
-      "A structured deep-dive into your GTM — market, pipeline, messaging, offer — to surface what is blocking revenue growth.",
-  },
-  {
-    title: "Revenue Scorecard",
-    description:
-      "A 15-question diagnostic that benchmarks your GTM across five dimensions and prioritises where to focus first.",
-  },
-  {
-    title: "Revenue Engine Build",
-    description:
-      "We work inside your team to build and execute the pipeline, messaging, and sales process changes the diagnostic surfaces.",
-  },
-];

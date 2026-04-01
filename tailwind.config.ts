@@ -9,33 +9,21 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // TODO: Replace with Designer-specified brand colors once MEZA-30 is delivered
-        brand: {
-          50: "#f8f7f4",
-          100: "#ede9e0",
-          200: "#d8d0c0",
-          300: "#bfb49e",
-          400: "#a6977c",
-          500: "#8c7d62",
-          600: "#73664f",
-          700: "#5a5040",
-          800: "#3d3629",
-          900: "#1f1b14",
-          950: "#0d0c09",
-        },
-        accent: {
-          DEFAULT: "#c9a96e",
-          dark: "#a8864a",
-          light: "#e8cfa0",
-        },
+        cream: "#FAFAF8",
+        linen: "#F2F0EB",
+        ink: "#111118",
+        slate: "#6B6C75",
+        navy: "#1A2B6B",
+        gold: "#C8A96E",
+        rule: "#E2E0DB",
       },
       fontFamily: {
-        // TODO: Update with Designer-specified font stack once MEZA-30 is delivered
-        sans: ["var(--font-sans)", "system-ui", "sans-serif"],
-        serif: ["var(--font-serif)", "Georgia", "serif"],
+        sans: ["var(--font-inter)", "system-ui", "sans-serif"],
+        serif: ["var(--font-cormorant)", "Georgia", "serif"],
       },
       maxWidth: {
-        "8xl": "88rem",
+        content: "1160px",
+        copy: "720px",
       },
     },
   },

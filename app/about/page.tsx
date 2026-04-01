@@ -1,116 +1,140 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
-// TODO: Replace all copy with CMO-approved text from MEZA-29
-// TODO: Update layout per Designer specs from MEZA-30
-
 export const metadata: Metadata = {
   title: "About",
   description:
-    "Mezen is a consulting firm that works alongside B2B founders to fix revenue problems — not just advise on them.",
+    "Mezen was built on a simple observation: B2B founders don't have a strategy problem. They have a revenue problem.",
 };
+
+const APPROACH_PARAGRAPHS = [
+  "We use a diagnostic framework called MEZA — Market, Problem-Fit, Reach, Message, Offer — to identify exactly where in the revenue system the problem lives. Most founders who come to us have already tried the obvious fixes. MEZA helps us find the non-obvious ones.",
+  "We work alongside founders, not above them. That means you see our work in progress, push back on our thinking, and leave the engagement understanding not just what changed — but why, and how to repeat it. We're not interested in creating dependency.",
+  "We take a small number of engagements at once. This is a constraint we've chosen, because the quality of attention that produces results doesn't scale the way a slide deck does.",
+];
+
+const PROOF_POINTS = [
+  {
+    bold: "We do the work.",
+    body: "Not decks and handoffs. We sit inside your problem until it's solved.",
+  },
+  {
+    bold: "We diagnose first.",
+    body: "We don't sell a solution before we understand the problem. Every engagement starts with diagnosis, not a proposal.",
+  },
+  {
+    bold: "We share what we learn.",
+    body: "You should understand why your revenue problem exists — not just watch it get fixed. We document everything.",
+  },
+  {
+    bold: "We measure outcomes.",
+    body: "We care about the number, not the narrative. Results are the only deliverable that matters.",
+  },
+];
 
 export default function AboutPage() {
   return (
     <>
-      {/* Page header */}
-      <section className="py-24 border-b border-brand-800">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          <p className="text-accent text-sm font-medium tracking-widest uppercase mb-4">
-            About
-          </p>
-          {/* TODO: Replace with CMO headline */}
-          <h1 className="text-4xl sm:text-5xl font-serif text-brand-50 max-w-2xl text-balance">
-            Practitioners, not presenters.
-          </h1>
+      {/* Opening statement */}
+      <section className="bg-cream py-16 lg:py-[120px] border-b border-rule">
+        <div className="max-w-content mx-auto px-6 lg:px-12">
+          <div className="max-w-copy">
+            <p className="font-serif text-ink text-[24px] md:text-[28px] leading-[1.5] text-balance">
+              Mezen was built on a simple observation: B2B founders don&apos;t
+              have a strategy problem. They have a revenue problem, and the
+              consulting industry keeps selling them strategy. We built Mezen to
+              do the work that actually moves the number — not the work that
+              produces the most impressive output.
+            </p>
+          </div>
         </div>
       </section>
 
-      {/* About body */}
-      <section className="py-24 border-b border-brand-800">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12">
+      {/* Our approach */}
+      <section className="bg-cream py-16 lg:py-[120px] border-b border-rule">
+        <div className="max-w-content mx-auto px-6 lg:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
-            <div className="lg:col-span-7 space-y-6 text-brand-300 leading-relaxed">
-              {/* TODO: Replace with CMO about copy */}
-              <p>
-                Mezen was founded on one observation: most B2B founders stall
-                not from lack of effort, but from working the wrong part of the
-                revenue system. The market is right, the product works, but
-                something in the pipeline, messaging, or offer structure is
-                leaking.
-              </p>
-              <p>
-                We built Mezen to fix that — with a structured diagnostic
-                methodology and an embedded delivery model. We work alongside
-                your team, not above it.
-              </p>
-              <p>
-                {/* TODO: Expand with team bios, credibility proof from CMO */}
-                [Team section — CMO to provide bio content, MEZA-29]
-              </p>
+            <div className="lg:col-span-3">
+              <h2 className="font-sans font-semibold text-xs tracking-[0.1em] uppercase text-slate pt-1">
+                Our approach
+              </h2>
             </div>
-            {/* TODO: Designer-specified layout for team/visual content */}
-            <div className="lg:col-span-5">
-              <div className="h-64 bg-brand-900 border border-brand-800 flex items-center justify-center rounded-sm">
-                <span className="text-brand-600 text-sm">[Team photo / visual — MEZA-30]</span>
-              </div>
+            <div className="lg:col-span-7 space-y-6">
+              {APPROACH_PARAGRAPHS.map((para, i) => (
+                <p
+                  key={i}
+                  className="text-slate leading-[1.75] text-base max-w-[620px]"
+                >
+                  {para}
+                </p>
+              ))}
             </div>
           </div>
         </div>
       </section>
 
-      {/* Values / How we work */}
-      <section className="py-24 border-b border-brand-800">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          <h2 className="text-2xl sm:text-3xl font-serif text-brand-50 mb-12">
-            {/* TODO: CMO section heading */}
-            How we operate
+      {/* Team */}
+      <section className="bg-linen py-16 lg:py-[120px] border-b border-rule">
+        <div className="max-w-content mx-auto px-6 lg:px-12">
+          <h2 className="font-serif font-semibold text-ink text-[30px] md:text-[44px] leading-[1.15] mb-12">
+            Team
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {/* TODO: Replace with CMO values/principles copy */}
-            {VALUES_PLACEHOLDER.map((v) => (
-              <div key={v.title} className="space-y-3">
-                <h3 className="font-semibold text-brand-50">{v.title}</h3>
-                <p className="text-brand-400 text-sm leading-relaxed">{v.body}</p>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {/* Placeholder team card — founder input required for names/bios/photos */}
+            <div className="bg-cream border border-rule p-8" style={{ borderRadius: "2px" }}>
+              <div
+                className="w-16 h-16 bg-linen border border-rule flex items-center justify-center mb-6"
+                style={{ borderRadius: "2px" }}
+              >
+                <span className="font-sans font-medium text-slate text-lg">M</span>
               </div>
+              <p className="font-sans font-semibold text-ink text-base mb-1">
+                [Founder name]
+              </p>
+              <p className="font-sans text-xs text-slate tracking-[0.04em] mb-4">
+                Co-founder &amp; Partner
+              </p>
+              <p className="text-slate leading-[1.65] text-sm">
+                Founder bio to be provided. Spent years inside growth-stage B2B
+                companies navigating the same revenue problems Mezen solves.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Why founders work with us */}
+      <section className="bg-cream py-16 lg:py-[120px] border-b border-rule">
+        <div className="max-w-content mx-auto px-6 lg:px-12">
+          <h2 className="font-serif font-semibold text-ink text-[30px] md:text-[44px] leading-[1.15] mb-12">
+            Why founders work with us
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 max-w-copy">
+            {PROOF_POINTS.map((point) => (
+              <p key={point.bold} className="text-ink leading-[1.65] text-base">
+                <strong className="font-semibold">{point.bold}</strong>{" "}
+                <span className="text-slate">{point.body}</span>
+              </p>
             ))}
           </div>
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="py-24">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          <div className="max-w-xl">
-            <h2 className="text-2xl sm:text-3xl font-serif text-brand-50 mb-6">
-              {/* TODO: CMO CTA copy */}
-              Work with us.
-            </h2>
-            <Link
-              href="/contact"
-              className="inline-flex items-center justify-center px-8 py-4 bg-accent text-brand-950 font-semibold rounded-sm hover:bg-accent-dark transition-colors"
-            >
-              Get in touch
-            </Link>
-          </div>
+      {/* CTA closer */}
+      <section className="bg-navy py-16 lg:py-[120px]">
+        <div className="max-w-content mx-auto px-6 lg:px-12 text-center">
+          <h2 className="font-serif font-semibold text-linen text-[30px] md:text-[44px] leading-[1.15] mb-8 max-w-[640px] mx-auto text-balance">
+            If your revenue isn&apos;t moving the way it should, let&apos;s find out
+            why.
+          </h2>
+          <Link
+            href="/contact"
+            className="text-linen text-xs font-medium tracking-[0.08em] uppercase hover:opacity-70 transition-opacity underline underline-offset-4 decoration-linen/40"
+          >
+            Apply to work with us →
+          </Link>
         </div>
       </section>
     </>
   );
 }
-
-// TODO: Replace with CMO values copy
-const VALUES_PLACEHOLDER = [
-  {
-    title: "Embedded, not advisory",
-    body: "We are in the room with you, not reporting from a distance. Every engagement ends with work done, not a report filed.",
-  },
-  {
-    title: "Diagnostic-first",
-    body: "We do not sell solutions before we understand the problem. Every engagement starts with a structured diagnostic.",
-  },
-  {
-    title: "Founder-grade candour",
-    body: "We tell you what we see, including the uncomfortable parts. That is what you are paying for.",
-  },
-];

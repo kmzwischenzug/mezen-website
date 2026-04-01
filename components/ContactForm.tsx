@@ -10,7 +10,10 @@ const schema = z.object({
   name: z.string().min(1, "Name is required").max(100),
   email: z.string().email("Valid email required").max(255),
   company: z.string().max(100).optional(),
-  message: z.string().min(10, "Message must be at least 10 characters").max(2000),
+  message: z
+    .string()
+    .min(10, "Message must be at least 10 characters")
+    .max(2000),
 });
 
 type FormValues = z.infer<typeof schema>;
@@ -45,14 +48,14 @@ export function ContactForm() {
 
   if (status === "success") {
     return (
-      <div className="p-8 border border-brand-700 rounded-sm text-center">
-        <p className="text-brand-50 font-medium mb-2">Message sent.</p>
-        <p className="text-brand-400 text-sm">
-          We will follow up within one business day.
+      <div className="py-8">
+        <p className="font-sans font-medium text-ink mb-2">Message sent.</p>
+        <p className="text-slate text-sm leading-[1.65]">
+          Someone from the Mezen team will respond within 48 hours.
         </p>
         <button
           onClick={() => setStatus("idle")}
-          className="mt-6 text-accent text-sm hover:text-accent-light transition-colors"
+          className="mt-6 text-navy text-xs font-medium tracking-[0.06em] uppercase underline underline-offset-4 hover:text-ink transition-colors"
         >
           Send another message
         </button>
@@ -62,27 +65,25 @@ export function ContactForm() {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} noValidate className="space-y-6">
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-        <Field label="Name" error={errors.name?.message} required>
-          <input
-            {...register("name")}
-            type="text"
-            autoComplete="name"
-            className={inputClass(!!errors.name)}
-            placeholder="Jane Smith"
-          />
-        </Field>
+      <Field label="Name" error={errors.name?.message} required>
+        <input
+          {...register("name")}
+          type="text"
+          autoComplete="name"
+          className={inputClass(!!errors.name)}
+          placeholder="Jane Smith"
+        />
+      </Field>
 
-        <Field label="Company" error={errors.company?.message}>
-          <input
-            {...register("company")}
-            type="text"
-            autoComplete="organization"
-            className={inputClass(!!errors.company)}
-            placeholder="Acme Corp"
-          />
-        </Field>
-      </div>
+      <Field label="Company" error={errors.company?.message}>
+        <input
+          {...register("company")}
+          type="text"
+          autoComplete="organization"
+          className={inputClass(!!errors.company)}
+          placeholder="Acme Corp"
+        />
+      </Field>
 
       <Field label="Email" error={errors.email?.message} required>
         <input
@@ -94,17 +95,21 @@ export function ContactForm() {
         />
       </Field>
 
-      <Field label="Message" error={errors.message?.message} required>
+      <Field
+        label="What's the main problem you need solved?"
+        error={errors.message?.message}
+        required
+      >
         <textarea
           {...register("message")}
-          rows={6}
+          rows={3}
           className={cn(inputClass(!!errors.message), "resize-none")}
-          placeholder="Tell us about your situation — what you are working on, where growth is stalling, and what you have already tried."
+          placeholder="Describe the problem — pipeline that isn't converting, margins compressing, a decision you can't see clearly."
         />
       </Field>
 
       {status === "error" && (
-        <p className="text-red-400 text-sm">
+        <p className="text-red-600 text-xs">
           Something went wrong. Please try again or email us directly.
         </p>
       )}
@@ -112,9 +117,9 @@ export function ContactForm() {
       <button
         type="submit"
         disabled={status === "submitting"}
-        className="w-full flex items-center justify-center px-8 py-4 bg-accent text-brand-950 font-semibold rounded-sm hover:bg-accent-dark transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
+        className="text-navy text-sm font-medium tracking-[0.04em] hover:text-ink transition-colors disabled:opacity-40 disabled:cursor-not-allowed underline underline-offset-4 decoration-navy/40"
       >
-        {status === "submitting" ? "Sending…" : "Send message"}
+        {status === "submitting" ? "Sending…" : "Send →"}
       </button>
     </form>
   );
@@ -133,22 +138,22 @@ function Field({
 }) {
   return (
     <div>
-      <label className="block text-sm font-medium text-brand-200 mb-1.5">
+      <label className="block font-sans text-xs font-medium text-ink tracking-[0.04em] mb-2">
         {label}
-        {required && <span className="text-accent ml-1">*</span>}
+        {required && <span className="text-gold ml-1">*</span>}
       </label>
       {children}
-      {error && <p className="mt-1 text-red-400 text-xs">{error}</p>}
+      {error && <p className="mt-1.5 text-red-600 text-xs">{error}</p>}
     </div>
   );
 }
 
 function inputClass(hasError: boolean) {
   return cn(
-    "w-full bg-brand-900 border rounded-sm px-4 py-3 text-brand-100 text-sm placeholder:text-brand-600",
+    "w-full bg-cream border rounded-[2px] px-4 py-3 text-ink text-sm placeholder:text-slate/60",
     "focus:outline-none focus:ring-1 transition-colors",
     hasError
-      ? "border-red-500 focus:ring-red-500"
-      : "border-brand-700 focus:border-accent focus:ring-accent"
+      ? "border-red-400 focus:ring-red-400"
+      : "border-rule focus:border-navy focus:ring-navy/20"
   );
 }
