@@ -35,7 +35,7 @@ export function Nav() {
         <Link
           href="/"
           onClick={() => setOpen(false)}
-          className="font-sans text-sm font-medium tracking-[0.1em] uppercase text-ink hover:text-navy transition-colors"
+          className="font-sans text-sm font-medium tracking-[-0.02em] uppercase text-ink hover:text-navy transition-colors"
         >
           MEZEN
         </Link>

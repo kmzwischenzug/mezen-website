@@ -13,8 +13,8 @@ const config: Config = {
         linen: "#F2F0EB",
         ink: "#111118",
         slate: "#6B6C75",
-        navy: "#1A2B6B",
-        gold: "#C8A96E",
+        navy: "#0D1B3E",
+        gold: "#C4903B",
         rule: "#E2E0DB",
       },
       fontFamily: {
