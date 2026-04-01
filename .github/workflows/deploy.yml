@@ -11,18 +11,31 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Deploy via SSH
+      - name: Sync and rebuild on server
         uses: appleboy/ssh-action@v1.2.0
         with:
           host: 46.225.62.7
           username: root
           key: ${{ secrets.DEPLOY_SSH_KEY }}
+          envs: GITHUB_SHA
           script: |
             set -e
             DEPLOY_DIR=/opt/mezen-website
+
+            # Init git repo on server if not present
+            if [ ! -d "$DEPLOY_DIR/.git" ]; then
+              git -C $DEPLOY_DIR init
+              git -C $DEPLOY_DIR remote add origin https://github.com/kmzwischenzug/mezen-website.git
+            fi
+
+            # Fetch and reset to latest main
+            git -C $DEPLOY_DIR fetch origin main
+            git -C $DEPLOY_DIR reset --hard origin/main
+
+            # Rebuild container
             cd $DEPLOY_DIR
-            git fetch origin main
-            git reset --hard origin/main
             docker compose up -d --build
-            sleep 10
-            docker compose ps
+
+            # Wait and verify
+            sleep 15
+            curl -sf http://localhost:3000 > /dev/null && echo "Site healthy" || echo "WARNING: health check failed"
