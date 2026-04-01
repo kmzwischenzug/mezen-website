@@ -1,10 +1,9 @@
 
 
 const nextConfig = {
-  // Strict mode for better React dev experience
   reactStrictMode: true,
-
-  // Allow images from common domains if needed later
+  // Required for Docker / self-hosted deployment (Hetzner)
+  output: 'standalone',
   images: {
     formats: ["image/avif", "image/webp"],
   },
